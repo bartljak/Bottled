@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		27BE112C8FB0998396237862 /* Pods_BottledUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E1F0C41AB67E7B4E28070D /* Pods_BottledUITests.framework */; };
 		2CDF6BBC21769E1800214481 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF6BBB21769E1800214481 /* AppDelegate.swift */; };
-		2CDF6BBE21769E1800214481 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF6BBD21769E1800214481 /* ViewController.swift */; };
+		2CDF6BBE21769E1800214481 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF6BBD21769E1800214481 /* ChatViewController.swift */; };
 		2CDF6BC121769E1800214481 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CDF6BBF21769E1800214481 /* Main.storyboard */; };
 		2CDF6BC321769E1900214481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CDF6BC221769E1900214481 /* Assets.xcassets */; };
 		2CDF6BC621769E1900214481 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CDF6BC421769E1900214481 /* LaunchScreen.storyboard */; };
@@ -41,7 +41,7 @@
 		0A80DF4DA832715213EC5424 /* Pods_BottledTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BottledTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDF6BB821769E1800214481 /* Bottled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bottled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDF6BBB21769E1800214481 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2CDF6BBD21769E1800214481 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2CDF6BBD21769E1800214481 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2CDF6BC021769E1800214481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CDF6BC221769E1900214481 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CDF6BC521769E1900214481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				2CDF6BBB21769E1800214481 /* AppDelegate.swift */,
-				2CDF6BBD21769E1800214481 /* ViewController.swift */,
+				2CDF6BBD21769E1800214481 /* ChatViewController.swift */,
 				2CDF6BBF21769E1800214481 /* Main.storyboard */,
 				2CDF6BC221769E1900214481 /* Assets.xcassets */,
 				2CDF6BC421769E1900214481 /* LaunchScreen.storyboard */,
@@ -179,6 +179,7 @@
 				2CDF6BB421769E1800214481 /* Sources */,
 				2CDF6BB521769E1800214481 /* Frameworks */,
 				2CDF6BB621769E1800214481 /* Resources */,
+				7D59ACDBC3C400363E6B07F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -321,6 +322,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7D59ACDBC3C400363E6B07F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bottled/Pods-Bottled-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bottled/Pods-Bottled-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DDD9831A451E0477176F8434 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,7 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CDF6BBE21769E1800214481 /* ViewController.swift in Sources */,
+				2CDF6BBE21769E1800214481 /* ChatViewController.swift in Sources */,
 				2CDF6BBC21769E1800214481 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
