@@ -14,6 +14,7 @@
 		2CDF6BC621769E1900214481 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CDF6BC421769E1900214481 /* LaunchScreen.storyboard */; };
 		2CDF6BD121769E1A00214481 /* BottledTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF6BD021769E1A00214481 /* BottledTests.swift */; };
 		2CDF6BDC21769E1A00214481 /* BottledUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF6BDB21769E1A00214481 /* BottledUITests.swift */; };
+		2CDF6BEA21769F9E00214481 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CDF6BE921769F9E00214481 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		2CDF6BD721769E1A00214481 /* BottledUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BottledUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDF6BDB21769E1A00214481 /* BottledUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottledUITests.swift; sourceTree = "<group>"; };
 		2CDF6BDD21769E1A00214481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CDF6BE921769F9E00214481 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				2CDF6BC221769E1900214481 /* Assets.xcassets */,
 				2CDF6BC421769E1900214481 /* LaunchScreen.storyboard */,
 				2CDF6BC721769E1900214481 /* Info.plist */,
+				2CDF6BE921769F9E00214481 /* GoogleService-Info.plist */,
 			);
 			path = Bottled;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CDF6BC621769E1900214481 /* LaunchScreen.storyboard in Resources */,
+				2CDF6BEA21769F9E00214481 /* GoogleService-Info.plist in Resources */,
 				2CDF6BC321769E1900214481 /* Assets.xcassets in Resources */,
 				2CDF6BC121769E1800214481 /* Main.storyboard in Resources */,
 			);
