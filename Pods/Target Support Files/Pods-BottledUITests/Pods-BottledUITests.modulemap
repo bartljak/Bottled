@@ -1,0 +1,6 @@
+framework module Pods_BottledUITests {
+  umbrella header "Pods-BottledUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
