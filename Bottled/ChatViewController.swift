@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import JSQMessagesViewController
 
-class ChatViewController: UIViewController {
+class ChatViewController: JSQMessagesViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        senderId = "1234"
+        senderDisplayName = "Jake Bartles"
         // Do any additional setup after loading the view, typically from a nib.
     }
 
