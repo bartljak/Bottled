@@ -34,6 +34,27 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Montserrat-Black</string>
+		<string>Montserrat-BlackItalic</string>
+		<string>Montserrat-Bold</string>
+		<string>Montserrat-BoldItalic</string>
+		<string>Montserrat-ExtraBold</string>
+		<string>Montserrat-ExtraBoldItalic</string>
+		<string>Montserrat-ExtraLight</string>
+		<string>Montserrat-ExtraLightItalic</string>
+		<string>Montserrat-Italic</string>
+		<string>Montserrat-Light</string>
+		<string>Montserrat-LightItalic</string>
+		<string>Montserrat-Medium</string>
+		<string>Montserrat-MediumItalic</string>
+		<string>Montserrat-Regular</string>
+		<string>Montserrat-SemiBold</string>
+		<string>Montserrat-SemiBoldItalic</string>
+		<string>Montserrat-Thin</string>
+		<string>Montserrat-ThinItalic</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
