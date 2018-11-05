@@ -29,7 +29,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BP8-e8-Czi">
-                                <rect key="frame" x="100" y="106" width="178" height="49"/>
+                                <rect key="frame" x="100" y="80" width="178" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="40"/>
                                 <color key="textColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -136,10 +136,27 @@
         <!--ChatViewController-->
         <scene sceneID="2kP-BQ-FcN">
             <objects>
-                <viewController id="nkU-U9-VAy" userLabel="ChatViewController" customClass="ChatViewController" customModule="Bottled" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nkU-U9-VAy" userLabel="ChatViewController" customClass="TabbedBarViewController" customModule="Bottled" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ciW-MO-1Jr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Messages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2g-PG-i0H">
+                                <rect key="frame" x="80" y="80" width="209" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="40"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFT-Y4-2Di">
+                                <rect key="frame" x="161" y="342" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="7jb-HY-Jeh" kind="show" id="96h-bM-Qi6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.71764705880000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="SlJ-cw-R8I"/>
                     </view>
@@ -147,7 +164,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUV-3o-l5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1841" y="-72"/>
+            <point key="canvasLocation" x="1840.8" y="-72.413793103448285"/>
+        </scene>
+        <!--Storyboard-->
+        <scene sceneID="PQk-Wp-Q9i">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Storyboard" id="7jb-HY-Jeh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OFS-Tg-gSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2555" y="-106"/>
         </scene>
         <!--ContactsViewController-->
         <scene sceneID="Gxq-cS-jmp">
@@ -158,7 +183,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZ1-qo-7sp">
-                                <rect key="frame" x="100" y="106" width="191" height="49"/>
+                                <rect key="frame" x="92" y="80" width="191" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraBold" family="Montserrat" pointSize="40"/>
                                 <color key="textColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
