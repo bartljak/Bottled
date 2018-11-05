@@ -16,7 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="cH6-fI-3wx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1647058824" green="0.71764705880000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="qGP-Qs-cpb"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="wJh-tp-Mic"/>
@@ -32,7 +32,7 @@
                     <view key="view" contentMode="scaleToFill" id="ciW-MO-1Jr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1647058824" green="0.71764705880000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="SlJ-cw-R8I"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Messages" id="za8-OW-2dR"/>
@@ -48,7 +48,7 @@
                     <view key="view" contentMode="scaleToFill" id="8dx-K4-hrg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1647058824" green="0.71764705880000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ZO7-yN-YN7"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="opB-ee-Vl5"/>
