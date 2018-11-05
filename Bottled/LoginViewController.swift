@@ -20,15 +20,35 @@ class LoginViewController: UIViewController {
 
         loginButton.layer.cornerRadius = 5
         loginButton.layer.borderWidth = 0
-        // Do any additional setup after loading the view.
+        
+        let keyboardToolBar = UIToolbar()
+        keyboardToolBar.sizeToFit()
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem:
+            UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem:
+            UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.doneClicked) )
+        
+        keyboardToolBar.setItems([flexibleSpace, doneButton], animated: true)
+        
+        email.inputAccessoryView = keyboardToolBar
+        password.inputAccessoryView = keyboardToolBar
     }
     
+    @objc func doneClicked() {
+        view.endEditing(true)
+    }
 
     @IBAction func loginAction(_ sender: Any) {
         
-        Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+        let username = email.text! + "@bottled.com"
+        
+        Auth.auth().signIn(withEmail: username, password: password.text!) { (user, error) in
             if error == nil{
                 self.performSegue(withIdentifier: "loginToHome", sender: self)
+                let defaults = UserDefaults.standard
+                defaults.set(username, forKey: "Username")
+                defaults.set(true, forKey: "LoggedIn")
             }
             else{
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
