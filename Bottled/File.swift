@@ -1,17 +1,6 @@
-//
-//  ViewController.swift
-//  Bottled
-//
-//  Created by Jake Bartles on 10/16/18.
-//  Copyright © 2018 PSV. All rights reserved.
-//
-
 import UIKit
-import JSQMessagesViewController
 
-class ChatViewController: JSQMessagesViewController {
-    
-
+class SignupViewController: ViewController {
     
     var messages = [JSQMessage]()
     
@@ -19,23 +8,11 @@ class ChatViewController: JSQMessagesViewController {
         return JSQMessagesBubbleImageFactory()!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true;
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        self.navigationController?.isNavigationBarHidden = false;
-    }
-    
     lazy var incomingBubble: JSQMessagesBubbleImage = {
         return JSQMessagesBubbleImageFactory()!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }()
-
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         // temporary constant for the standard UserDefaults
@@ -47,7 +24,7 @@ class ChatViewController: JSQMessagesViewController {
             senderId = id
             senderDisplayName = name
         }
-        // user doesnt exist
+            // user doesnt exist
         else
         {
             // assign random ID to senderid and make name empty
@@ -162,7 +139,7 @@ class ChatViewController: JSQMessagesViewController {
         return messages[indexPath.item].senderId == senderId ? 0 : 15
     }
     
-   // override, user hits send button
+    // override, user hits send button
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!)
     {
         // get chats from firebase
@@ -176,4 +153,3 @@ class ChatViewController: JSQMessagesViewController {
         finishSendingMessage()
     }
 }
-

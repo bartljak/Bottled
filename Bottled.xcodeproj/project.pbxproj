@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C558B0121901BF30037E8A0 /* ThirdMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C558AFF21901BF30037E8A0 /* ThirdMain.storyboard */; };
+		0C558B05219028A10037E8A0 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */; };
+		0C90719D218FB53D0099436B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90719C218FB53D0099436B /* SignupViewController.swift */; };
+		0C90719F218FBAA90099436B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90719E218FBAA90099436B /* LoginViewController.swift */; };
+		0C9071AA218FF1A00099436B /* icon.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0C9071A4218FF19E0099436B /* icon.PNG */; };
+		0C9071AB218FF1A00099436B /* icon@3x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0C9071A5218FF19F0099436B /* icon@3x.PNG */; };
+		0C9071AC218FF1A00099436B /* icon@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0C9071A6218FF19F0099436B /* icon@2x.PNG */; };
+		0C9071AD218FF1A00099436B /* icon2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0C9071A7218FF19F0099436B /* icon2.PNG */; };
+		0C9071AE218FF1A00099436B /* icon2@2x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0C9071A8218FF19F0099436B /* icon2@2x.PNG */; };
+		0C9071AF218FF1A00099436B /* icon2@3x.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0C9071A9218FF1A00099436B /* icon2@3x.PNG */; };
+		0C9071B2218FF5B50099436B /* TabbedBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9071B1218FF5B50099436B /* TabbedBarViewController.swift */; };
 		27BE112C8FB0998396237862 /* Pods_BottledUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E1F0C41AB67E7B4E28070D /* Pods_BottledUITests.framework */; };
 		2C3269392176B10E009A79AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3269382176B10E009A79AB /* Constants.swift */; };
 		2CDF6BBC21769E1800214481 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF6BBB21769E1800214481 /* AppDelegate.swift */; };
@@ -40,6 +51,17 @@
 
 /* Begin PBXFileReference section */
 		0A80DF4DA832715213EC5424 /* Pods_BottledTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BottledTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C558B0021901BF30037E8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ThirdMain.storyboard; sourceTree = "<group>"; };
+		0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		0C90719C218FB53D0099436B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		0C90719E218FBAA90099436B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0C9071A4218FF19E0099436B /* icon.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.PNG; sourceTree = "<group>"; };
+		0C9071A5218FF19F0099436B /* icon@3x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.PNG"; sourceTree = "<group>"; };
+		0C9071A6218FF19F0099436B /* icon@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.PNG"; sourceTree = "<group>"; };
+		0C9071A7218FF19F0099436B /* icon2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.PNG; sourceTree = "<group>"; };
+		0C9071A8218FF19F0099436B /* icon2@2x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon2@2x.PNG"; sourceTree = "<group>"; };
+		0C9071A9218FF1A00099436B /* icon2@3x.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon2@3x.PNG"; sourceTree = "<group>"; };
+		0C9071B1218FF5B50099436B /* TabbedBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedBarViewController.swift; sourceTree = "<group>"; };
 		2C3269382176B10E009A79AB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2CDF6BB821769E1800214481 /* Bottled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bottled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDF6BBB21769E1800214481 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +115,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C558AFC21901B9C0037E8A0 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				2CDF6BBF21769E1800214481 /* Main.storyboard */,
+				2CDF6BC421769E1900214481 /* LaunchScreen.storyboard */,
+				0C558AFF21901BF30037E8A0 /* ThirdMain.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		0C9071B0218FF1A80099436B /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				0C9071A4218FF19E0099436B /* icon.PNG */,
+				0C9071A6218FF19F0099436B /* icon@2x.PNG */,
+				0C9071A5218FF19F0099436B /* icon@3x.PNG */,
+				0C9071A7218FF19F0099436B /* icon2.PNG */,
+				0C9071A8218FF19F0099436B /* icon2@2x.PNG */,
+				0C9071A9218FF1A00099436B /* icon2@3x.PNG */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		2CDF6BAF21769E1800214481 = {
 			isa = PBXGroup;
 			children = (
@@ -118,14 +163,18 @@
 		2CDF6BBA21769E1800214481 /* Bottled */ = {
 			isa = PBXGroup;
 			children = (
+				0C558AFC21901B9C0037E8A0 /* Storyboard */,
+				0C9071B0218FF1A80099436B /* Icons */,
 				2CDF6BBB21769E1800214481 /* AppDelegate.swift */,
 				2CDF6BBD21769E1800214481 /* ChatViewController.swift */,
-				2CDF6BBF21769E1800214481 /* Main.storyboard */,
+				0C9071B1218FF5B50099436B /* TabbedBarViewController.swift */,
 				2CDF6BC221769E1900214481 /* Assets.xcassets */,
-				2CDF6BC421769E1900214481 /* LaunchScreen.storyboard */,
 				2CDF6BC721769E1900214481 /* Info.plist */,
 				2CDF6BE921769F9E00214481 /* GoogleService-Info.plist */,
 				2C3269382176B10E009A79AB /* Constants.swift */,
+				0C90719C218FB53D0099436B /* SignupViewController.swift */,
+				0C90719E218FBAA90099436B /* LoginViewController.swift */,
+				0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */,
 			);
 			path = Bottled;
 			sourceTree = "<group>";
@@ -281,8 +330,15 @@
 			files = (
 				2CDF6BC621769E1900214481 /* LaunchScreen.storyboard in Resources */,
 				2CDF6BEA21769F9E00214481 /* GoogleService-Info.plist in Resources */,
+				0C9071AB218FF1A00099436B /* icon@3x.PNG in Resources */,
 				2CDF6BC321769E1900214481 /* Assets.xcassets in Resources */,
+				0C9071AC218FF1A00099436B /* icon@2x.PNG in Resources */,
+				0C9071AA218FF1A00099436B /* icon.PNG in Resources */,
+				0C558B0121901BF30037E8A0 /* ThirdMain.storyboard in Resources */,
 				2CDF6BC121769E1800214481 /* Main.storyboard in Resources */,
+				0C9071AF218FF1A00099436B /* icon2@3x.PNG in Resources */,
+				0C9071AE218FF1A00099436B /* icon2@2x.PNG in Resources */,
+				0C9071AD218FF1A00099436B /* icon2.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +466,10 @@
 			files = (
 				2CDF6BBE21769E1800214481 /* ChatViewController.swift in Sources */,
 				2CDF6BBC21769E1800214481 /* AppDelegate.swift in Sources */,
+				0C9071B2218FF5B50099436B /* TabbedBarViewController.swift in Sources */,
+				0C558B05219028A10037E8A0 /* AuthenticationViewController.swift in Sources */,
+				0C90719D218FB53D0099436B /* SignupViewController.swift in Sources */,
+				0C90719F218FBAA90099436B /* LoginViewController.swift in Sources */,
 				2C3269392176B10E009A79AB /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +506,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0C558AFF21901BF30037E8A0 /* ThirdMain.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C558B0021901BF30037E8A0 /* Base */,
+			);
+			name = ThirdMain.storyboard;
+			sourceTree = "<group>";
+		};
 		2CDF6BBF21769E1800214481 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -587,8 +655,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2KEQWVGT5Q;
+				DEVELOPMENT_TEAM = R8Y5C58XQ4;
 				INFOPLIST_FILE = Bottled/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -606,8 +675,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2KEQWVGT5Q;
+				DEVELOPMENT_TEAM = R8Y5C58XQ4;
 				INFOPLIST_FILE = Bottled/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
