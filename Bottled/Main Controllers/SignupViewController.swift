@@ -41,19 +41,27 @@ class SignupViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @IBAction func signUpAction(_ sender: Any) {
-        if password.text != passwordConfirm.text {
+    @IBAction func signUpAction(_ sender: Any)
+    {
+        
+        
+        if self.password.text != self.passwordConfirm.text
+        {
+            
             let alertController = UIAlertController(title: "Password Incorrect", message: "Please re-type password", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        else{
+        else
+        {
+            
             let username = email.text! + "@bottled.com"
             
             Auth.auth().createUser(withEmail: username, password: password.text!){ (user, error) in
                 if error == nil {
+                    
                     self.performSegue(withIdentifier: "signupToHome", sender: self)
                     let defaults = UserDefaults.standard
                     defaults.set(username, forKey: "Username")

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C14A9A821A9DB5700376CD0 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14A9A721A9DB5700376CD0 /* ContactsViewController.swift */; };
+		0C14A9AD21AA3DAA00376CD0 /* Bottled.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C14A9AB21AA3DAA00376CD0 /* Bottled.xcdatamodeld */; };
 		0C558B0121901BF30037E8A0 /* ThirdMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C558AFF21901BF30037E8A0 /* ThirdMain.storyboard */; };
 		0C558B05219028A10037E8A0 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */; };
 		0C90719D218FB53D0099436B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90719C218FB53D0099436B /* SignupViewController.swift */; };
@@ -41,7 +43,7 @@
 		0CE8E4102190D00C00059D3C /* PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8E40F2190D00C00059D3C /* PincodeViewController.swift */; };
 		0CE8E4122190D51700059D3C /* PincodeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8E4112190D51700059D3C /* PincodeLoginViewController.swift */; };
 		0CE8E4142190EDA100059D3C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE8E4132190EDA100059D3C /* Storyboard.storyboard */; };
-		0CE8E4162190EE8200059D3C /* TabbedChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8E4152190EE8200059D3C /* TabbedChatViewController.swift */; };
+		0CE8E4162190EE8200059D3C /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8E4152190EE8200059D3C /* MessagesViewController.swift */; };
 		27BE112C8FB0998396237862 /* Pods_BottledUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E1F0C41AB67E7B4E28070D /* Pods_BottledUITests.framework */; };
 		2C3269392176B10E009A79AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3269382176B10E009A79AB /* Constants.swift */; };
 		2CDF6BBC21769E1800214481 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF6BBB21769E1800214481 /* AppDelegate.swift */; };
@@ -75,6 +77,8 @@
 
 /* Begin PBXFileReference section */
 		0A80DF4DA832715213EC5424 /* Pods_BottledTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BottledTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C14A9A721A9DB5700376CD0 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		0C14A9AC21AA3DAA00376CD0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0C558B0021901BF30037E8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ThirdMain.storyboard; sourceTree = "<group>"; };
 		0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		0C90719C218FB53D0099436B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +113,7 @@
 		0CE8E40F2190D00C00059D3C /* PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeViewController.swift; sourceTree = "<group>"; };
 		0CE8E4112190D51700059D3C /* PincodeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeLoginViewController.swift; sourceTree = "<group>"; };
 		0CE8E4132190EDA100059D3C /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		0CE8E4152190EE8200059D3C /* TabbedChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedChatViewController.swift; sourceTree = "<group>"; };
+		0CE8E4152190EE8200059D3C /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		2C3269382176B10E009A79AB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2CDF6BB821769E1800214481 /* Bottled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bottled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDF6BBB21769E1800214481 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +167,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C14A9A921A9DBB000376CD0 /* Main Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */,
+				0C90719E218FBAA90099436B /* LoginViewController.swift */,
+				0CE8E4112190D51700059D3C /* PincodeLoginViewController.swift */,
+				0CE8E40B2190AABB00059D3C /* SpashScreenViewController.swift */,
+				0C90719C218FB53D0099436B /* SignupViewController.swift */,
+			);
+			path = "Main Controllers";
+			sourceTree = "<group>";
+		};
+		0C14A9AA21A9DBBB00376CD0 /* ThirdMain Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0C14A9A721A9DB5700376CD0 /* ContactsViewController.swift */,
+				0CE8E40D2190CCBC00059D3C /* SettingsViewController.swift */,
+				0CE8E4152190EE8200059D3C /* MessagesViewController.swift */,
+				0CE8E40F2190D00C00059D3C /* PincodeViewController.swift */,
+				0C9071B1218FF5B50099436B /* TabbedBarViewController.swift */,
+				2CDF6BBD21769E1800214481 /* ChatViewController.swift */,
+			);
+			path = "ThirdMain Controllers";
+			sourceTree = "<group>";
+		};
 		0C558AFC21901B9C0037E8A0 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,24 +266,17 @@
 		2CDF6BBA21769E1800214481 /* Bottled */ = {
 			isa = PBXGroup;
 			children = (
-				0CE8E4152190EE8200059D3C /* TabbedChatViewController.swift */,
-				0CE8E4112190D51700059D3C /* PincodeLoginViewController.swift */,
-				0CE8E40F2190D00C00059D3C /* PincodeViewController.swift */,
-				0CE8E40D2190CCBC00059D3C /* SettingsViewController.swift */,
+				0C14A9AA21A9DBBB00376CD0 /* ThirdMain Controllers */,
+				0C14A9A921A9DBB000376CD0 /* Main Controllers */,
 				0CE8E3E62190A9EF00059D3C /* Fonts */,
 				0C558AFC21901B9C0037E8A0 /* Storyboard */,
 				0C9071B0218FF1A80099436B /* Icons */,
 				2CDF6BBB21769E1800214481 /* AppDelegate.swift */,
-				2CDF6BBD21769E1800214481 /* ChatViewController.swift */,
-				0C9071B1218FF5B50099436B /* TabbedBarViewController.swift */,
+				0C14A9AB21AA3DAA00376CD0 /* Bottled.xcdatamodeld */,
 				2CDF6BC221769E1900214481 /* Assets.xcassets */,
 				2CDF6BC721769E1900214481 /* Info.plist */,
 				2CDF6BE921769F9E00214481 /* GoogleService-Info.plist */,
 				2C3269382176B10E009A79AB /* Constants.swift */,
-				0C90719C218FB53D0099436B /* SignupViewController.swift */,
-				0C90719E218FBAA90099436B /* LoginViewController.swift */,
-				0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */,
-				0CE8E40B2190AABB00059D3C /* SpashScreenViewController.swift */,
 			);
 			path = Bottled;
 			sourceTree = "<group>";
@@ -564,8 +586,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CE8E40C2190AABB00059D3C /* SpashScreenViewController.swift in Sources */,
+				0C14A9A821A9DB5700376CD0 /* ContactsViewController.swift in Sources */,
 				2CDF6BBE21769E1800214481 /* ChatViewController.swift in Sources */,
-				0CE8E4162190EE8200059D3C /* TabbedChatViewController.swift in Sources */,
+				0C14A9AD21AA3DAA00376CD0 /* Bottled.xcdatamodeld in Sources */,
+				0CE8E4162190EE8200059D3C /* MessagesViewController.swift in Sources */,
 				0CE8E4122190D51700059D3C /* PincodeLoginViewController.swift in Sources */,
 				2CDF6BBC21769E1800214481 /* AppDelegate.swift in Sources */,
 				0CE8E4102190D00C00059D3C /* PincodeViewController.swift in Sources */,
@@ -919,6 +943,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0C14A9AB21AA3DAA00376CD0 /* Bottled.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0C14A9AC21AA3DAA00376CD0 /* Model.xcdatamodel */,
+			);
+			currentVersion = 0C14A9AC21AA3DAA00376CD0 /* Model.xcdatamodel */;
+			path = Bottled.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2CDF6BB021769E1800214481 /* Project object */;
 }
