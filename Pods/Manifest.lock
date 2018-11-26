@@ -70,6 +70,7 @@ PODS:
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - leveldb-library (1.20)
+  - MessageKit (1.0.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -82,6 +83,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - JSQMessagesViewController
+  - MessageKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -99,6 +101,7 @@ SPEC REPOS:
     - JSQMessagesViewController
     - JSQSystemSoundPlayer
     - leveldb-library
+    - MessageKit
     - nanopb
 
 SPEC CHECKSUMS:
@@ -116,8 +119,9 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: 6587f56aedbcb150a8ba1d968e1ef58b1bc758b7
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  MessageKit: 16160036b16476b04bd0e9f2c7ce67e662e503e4
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: e7443bcce59707445f356360dd344eaa771796b1
+PODFILE CHECKSUM: b21cd79e13a8fa28ba91fd3a6a1655cad73c0fc6
 
 COCOAPODS: 1.5.3
