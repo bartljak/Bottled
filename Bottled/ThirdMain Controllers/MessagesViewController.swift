@@ -19,6 +19,7 @@ class MessagesViewController: UIViewController {
 
     @IBOutlet weak var newMessageButton: UIButton!
     @IBOutlet weak var editMessagesButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

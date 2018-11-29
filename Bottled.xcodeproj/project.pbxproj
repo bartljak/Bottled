@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C14A9A821A9DB5700376CD0 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14A9A721A9DB5700376CD0 /* ContactsViewController.swift */; };
 		0C14A9AD21AA3DAA00376CD0 /* Bottled.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C14A9AB21AA3DAA00376CD0 /* Bottled.xcdatamodeld */; };
+		0C29B3CB21AF6EF40076C56C /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C29B3CA21AF6EF40076C56C /* NewMessageViewController.swift */; };
 		0C558B0121901BF30037E8A0 /* ThirdMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C558AFF21901BF30037E8A0 /* ThirdMain.storyboard */; };
 		0C558B05219028A10037E8A0 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */; };
 		0C90719D218FB53D0099436B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90719C218FB53D0099436B /* SignupViewController.swift */; };
@@ -79,6 +80,7 @@
 		0A80DF4DA832715213EC5424 /* Pods_BottledTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BottledTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C14A9A721A9DB5700376CD0 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		0C14A9AC21AA3DAA00376CD0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		0C29B3CA21AF6EF40076C56C /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 		0C558B0021901BF30037E8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ThirdMain.storyboard; sourceTree = "<group>"; };
 		0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		0C90719C218FB53D0099436B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		0C14A9AA21A9DBBB00376CD0 /* ThirdMain Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0C29B3CA21AF6EF40076C56C /* NewMessageViewController.swift */,
 				0C14A9A721A9DB5700376CD0 /* ContactsViewController.swift */,
 				0CE8E40D2190CCBC00059D3C /* SettingsViewController.swift */,
 				0CE8E4152190EE8200059D3C /* MessagesViewController.swift */,
@@ -592,6 +595,7 @@
 				0CE8E4162190EE8200059D3C /* MessagesViewController.swift in Sources */,
 				0CE8E4122190D51700059D3C /* PincodeLoginViewController.swift in Sources */,
 				2CDF6BBC21769E1800214481 /* AppDelegate.swift in Sources */,
+				0C29B3CB21AF6EF40076C56C /* NewMessageViewController.swift in Sources */,
 				0CE8E4102190D00C00059D3C /* PincodeViewController.swift in Sources */,
 				0C9071B2218FF5B50099436B /* TabbedBarViewController.swift in Sources */,
 				0C558B05219028A10037E8A0 /* AuthenticationViewController.swift in Sources */,

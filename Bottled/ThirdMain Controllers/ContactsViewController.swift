@@ -17,10 +17,13 @@ class ContactsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editContactsButton: UIButton!
     
+    
     var people: [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         
         editContactsButton.layer.cornerRadius = 5
         editContactsButton.layer.borderWidth = 0
@@ -30,6 +33,9 @@ class ContactsViewController: UIViewController {
 
         title = "The List"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        print("This is a test")
+        
     }
     
 
@@ -142,8 +148,8 @@ extension ContactsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        performSegue(withIdentifier: "newMessageSegue", sender: self)
-    
+        print("You selected cell #\(indexPath.row)!")
     }
+    
+    
 }

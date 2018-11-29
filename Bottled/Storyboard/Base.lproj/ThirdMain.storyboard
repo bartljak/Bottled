@@ -193,6 +193,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nkU-U9-VAy" id="C5B-7J-Gws"/>
+                                    <outlet property="delegate" destination="nkU-U9-VAy" id="EVi-2f-mL3"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFT-Y4-2Di">
                                 <rect key="frame" x="313" y="118" width="46" height="30"/>
@@ -219,6 +223,9 @@
                                 <state key="normal" title="Edit Messages">
                                     <color key="titleColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="LL2-Gu-JJI" kind="presentation" id="LDH-yK-rbM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.71764705880000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -228,6 +235,7 @@
                     <connections>
                         <outlet property="editMessagesButton" destination="um0-ol-W2D" id="MdI-bI-h94"/>
                         <outlet property="newMessageButton" destination="pjd-wy-tFH" id="kXa-GH-9sz"/>
+                        <outlet property="tableView" destination="A8n-N6-qf5" id="sSY-Ec-noj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUV-3o-l5d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -262,20 +270,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ecm-tf-vV8">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ecm-tf-vV8">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ecm-tf-vV8" id="rmb-In-fZ1">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ecm-tf-vV8" id="rmb-In-fZ1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="LL2-Gu-JJI" kind="presentation" identifier="newMessageSegue" id="Wee-Vt-IVf"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="1eP-xY-CK9" id="HjD-8W-rqG"/>
+                                    <outlet property="dataSource" destination="1eP-xY-CK9" id="C15-FR-bog"/>
+                                    <outlet property="delegate" destination="1eP-xY-CK9" id="rxr-Su-Gg7"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wh6-YG-vbX">
@@ -310,17 +316,17 @@
                     <connections>
                         <outlet property="addContactButton" destination="Wh6-YG-vbX" id="iyN-ju-gnI"/>
                         <outlet property="editContactsButton" destination="aEf-VY-ms7" id="B93-kC-eJA"/>
-                        <outlet property="tableView" destination="8rO-PM-UPO" id="C8s-1i-laW"/>
+                        <outlet property="tableView" destination="8rO-PM-UPO" id="m3P-8B-kqZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZT-38-GAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1840.8" y="-734.48275862068965"/>
         </scene>
-        <!--View Controller-->
+        <!--New Message View Controller-->
         <scene sceneID="kxH-wF-NQG">
             <objects>
-                <viewController id="LL2-Gu-JJI" sceneMemberID="viewController">
+                <viewController id="LL2-Gu-JJI" customClass="NewMessageViewController" customModule="Bottled" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e89-8K-h3t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -353,24 +359,34 @@
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mp-51-KMD">
-                                <rect key="frame" x="22" y="188" width="119" height="27"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hf-IZ-l1N">
+                                <rect key="frame" x="22" y="188" width="202" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="22"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aL-mY-fUs">
-                                <rect key="frame" x="282" y="185" width="70" height="33"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YO-yl-hkn">
+                                <rect key="frame" x="179" y="490" width="173" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
-                                <state key="normal" title="Change">
-                                    <color key="titleColor" red="0.99607843139999996" green="0.2901960784" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.2901960784" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="20"/>
+                                <state key="normal" title="Send!">
+                                    <color key="titleColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendButtonCliced:" destination="LL2-Gu-JJI" eventType="touchUpInside" id="MvI-vU-Il2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.71764705880000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="WiE-4J-Xto"/>
                     </view>
+                    <connections>
+                        <outlet property="messageBody" destination="j7a-0x-su4" id="H3s-DV-hp0"/>
+                        <outlet property="receipientField" destination="0hf-IZ-l1N" id="idR-HB-1Li"/>
+                        <outlet property="sendButton" destination="9YO-yl-hkn" id="JhE-Yd-6ob"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wM8-bR-83E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
