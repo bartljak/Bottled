@@ -205,7 +205,7 @@
                         <outlet property="unlockAppButton" destination="cTX-e4-Krn" id="h2B-Ke-bUi"/>
                         <segue destination="g9s-KQ-WlN" kind="show" identifier="authToPincode" id="inx-aH-dG0"/>
                         <segue destination="N3q-0w-woZ" kind="show" identifier="authToNav" id="liG-M7-0ye"/>
-                        <segue destination="UNB-rX-MB3" kind="show" identifier="authToSignupSignin" id="MWp-cf-SNp"/>
+                        <segue destination="UNB-rX-MB3" kind="show" identifier="authToSignupSignin" animates="NO" id="MWp-cf-SNp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mi-xJ-q1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -333,6 +333,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dIK-MD-ODh"/>
+        <segue reference="liG-M7-0ye"/>
     </inferredMetricsTieBreakers>
 </document>

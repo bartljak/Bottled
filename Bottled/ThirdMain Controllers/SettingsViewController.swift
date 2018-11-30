@@ -12,8 +12,13 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var pincodeSwitch: UISwitch!
     @IBOutlet weak var faceIDSwitch: UISwitch!
+    @IBOutlet weak var signOutButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        signOutButton.layer.cornerRadius = 5
+        signOutButton.layer.borderWidth = 0
 
         let defaults = UserDefaults.standard
         
@@ -75,6 +80,18 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(true)
         // Show the Navigation Bar
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    @IBAction func signoutFunc(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "UseFaceID")
+        defaults.set("", forKey: "Username")
+        defaults.set(false, forKey: "UsePinCode")
+        defaults.set("", forKey: "Pincode")
+        defaults.set("", forKey: "LoggedIn")
+        
+        self.performSegue(withIdentifier: "backToMain", sender: self)
+        
     }
     
     

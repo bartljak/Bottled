@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
             if error == nil{
                 self.performSegue(withIdentifier: "loginToHome", sender: self)
                 let defaults = UserDefaults.standard
-                defaults.set(username, forKey: "Username")
+                defaults.set(self.email.text!, forKey: "Username")
                 defaults.set(true, forKey: "LoggedIn")
             }
             else{

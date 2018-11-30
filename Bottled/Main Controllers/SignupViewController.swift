@@ -64,8 +64,12 @@ class SignupViewController: UIViewController {
                     
                     self.performSegue(withIdentifier: "signupToHome", sender: self)
                     let defaults = UserDefaults.standard
-                    defaults.set(username, forKey: "Username")
+                    defaults.set(self.email.text!, forKey: "Username")
                     defaults.set(true, forKey: "LoggedIn")
+                    
+                    
+                    
+                    
                 }
                 else{
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -73,6 +77,7 @@ class SignupViewController: UIViewController {
                     
                     alertController.addAction(defaultAction)
                     self.present(alertController, animated: true, completion: nil)
+                    
                 }
             }
         }

@@ -17,6 +17,8 @@ class ContactsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editContactsButton: UIButton!
     
+    var myVariable = "";
+    
     
     var people: [NSManagedObject] = []
     
@@ -84,6 +86,8 @@ class ContactsViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    
+    
     func save(username: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -103,7 +107,7 @@ class ContactsViewController: UIViewController {
     }
 }
 
-extension ContactsViewController: UITableViewDataSource {
+extension ContactsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return people.count
@@ -149,6 +153,24 @@ extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
+        
+        let person = people[indexPath.row]
+        
+        self.myVariable = person.value(forKeyPath: "username") as! String
+        
+        self.performSegue(withIdentifier: "contactsToNewMessage", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(myVariable);
+        if (segue.identifier == "contactsToNewMessage") {
+            print(myVariable);
+            
+            let destinationVC = segue.destination as? NewMessageViewController
+            destinationVC?.myVariable = self.myVariable
+        }
     }
     
     

@@ -14,6 +14,8 @@ class NewMessageViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var receipientField: UITextField!
     
+    var myVariable = "";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,19 +34,24 @@ class NewMessageViewController: UIViewController {
         
         messageBody.inputAccessoryView = keyboardToolBar
         receipientField.inputAccessoryView = keyboardToolBar
+        
+        receipientField.text = myVariable;
 
         // Do any additional setup after loading the view.
     }
     
     @objc func doneClicked() {
         view.endEditing(true)
+        
+        
     }
 
 
     @IBAction func sendButtonCliced(_ sender: Any) {
         
-        //code for whe send button is clicked goes here
+        self.dismiss(animated: true, completion: nil) //dismisses model
         
+        //add code here @jake
     }
     
 }
