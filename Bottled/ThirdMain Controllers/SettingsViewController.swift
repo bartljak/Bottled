@@ -13,65 +13,56 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var pincodeSwitch: UISwitch!
     @IBOutlet weak var faceIDSwitch: UISwitch!
     @IBOutlet weak var signOutButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         signOutButton.layer.cornerRadius = 5
         signOutButton.layer.borderWidth = 0
 
         let defaults = UserDefaults.standard
-        
-        if(isKeyPresentInUserDefaults(key: "UsePinCode") == false){
+
+        if isKeyPresentInUserDefaults(key: "UsePinCode") == false {
             defaults.set(false, forKey: "UsePinCode")
         }
-        
-        if(isKeyPresentInUserDefaults(key: "UseFaceID") == false){
+
+        if isKeyPresentInUserDefaults(key: "UseFaceID") == false {
             defaults.set(false, forKey: "UseFaceID")
         }
-        
+
         let usePinCode = defaults.bool(forKey: "UsePinCode")
         let useFaceID = defaults.bool(forKey: "UseFaceID")
-        
-        if(useFaceID == true)
-        {
+
+        if useFaceID == true {
             faceIDSwitch.setOn(true, animated: false)
-        }
-        else
-        {
+        } else {
             faceIDSwitch.setOn(false, animated: false)
         }
-        
-        if(usePinCode == true)
-        {
+
+        if usePinCode == true {
             pincodeSwitch.setOn(true, animated: false)
-        }
-        else
-        {
+        } else {
             pincodeSwitch.setOn(false, animated: false)
         }
     }
-    
+
     @IBAction func changeFaceIDSetting(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.set(faceIDSwitch.isOn, forKey: "UseFaceID")
-        
+
     }
-    
+
     @IBAction func changePinCodeSetting(_ sender: Any) {
         let defaults = UserDefaults.standard
-        
-        if(pincodeSwitch.isOn)
-        {
+
+        if pincodeSwitch.isOn {
             self.performSegue(withIdentifier: "settingsToPincode", sender: self)
-        }
-        else
-        {
+        } else {
             defaults.set(false, forKey: "UsePinCode")
             defaults.set("", forKey: "Pincode")
         }
     }
-    
+
     func isKeyPresentInUserDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
@@ -81,7 +72,7 @@ class SettingsViewController: UIViewController {
         // Show the Navigation Bar
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
+
     @IBAction func signoutFunc(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.set(false, forKey: "UseFaceID")
@@ -89,11 +80,9 @@ class SettingsViewController: UIViewController {
         defaults.set(false, forKey: "UsePinCode")
         defaults.set("", forKey: "Pincode")
         defaults.set("", forKey: "LoggedIn")
-        
+
         self.performSegue(withIdentifier: "backToMain", sender: self)
-        
+
     }
-    
-    
 
 }
