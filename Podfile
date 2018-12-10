@@ -11,6 +11,7 @@ target 'Bottled' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'JSQMessagesViewController'
+  pod 'SwiftLint'
   
   target 'BottledTests' do
     inherit! :search_paths
