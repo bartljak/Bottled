@@ -43,6 +43,9 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
 
+Coding Standard
+-------
+We use https://github.com/realm/SwiftLint to lint our code, we are following the GitHub Swift Stle Guide. 
 
 
 
