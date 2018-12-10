@@ -45,10 +45,30 @@ class LoginViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: username, password: password.text!) { (user, error) in
             if error == nil{
-                self.performSegue(withIdentifier: "loginToHome", sender: self)
+                
                 let defaults = UserDefaults.standard
                 defaults.set(self.email.text!, forKey: "Username")
                 defaults.set(true, forKey: "LoggedIn")
+                
+                
+                let query = Constants.refs.databaseUsers.queryOrderedByValue().queryEqual(toValue: self.email.text)
+                query.observe(.value, with: { (snapshot) in
+                    
+                    if(snapshot.childrenCount == 1){
+                        for childSnapshot in snapshot.children {
+                            let snap = childSnapshot as! DataSnapshot
+                            defaults.set(snap.key, forKey: "UserUID")
+                        }
+                        
+                        self.performSegue(withIdentifier: "loginToHome", sender: self)
+                    }
+                    else{
+                        print("Error: more or less than one userID found for that username");
+                    }
+                })
+                
+                
+                
             }
             else{
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)

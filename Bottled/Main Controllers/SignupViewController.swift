@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class SignupViewController: UIViewController {
 
@@ -62,13 +63,28 @@ class SignupViewController: UIViewController {
             Auth.auth().createUser(withEmail: username, password: password.text!){ (user, error) in
                 if error == nil {
                     
-                    self.performSegue(withIdentifier: "signupToHome", sender: self)
                     let defaults = UserDefaults.standard
                     defaults.set(self.email.text!, forKey: "Username")
                     defaults.set(true, forKey: "LoggedIn")
                     
+                    let query = Constants.refs.databaseUsers.queryOrderedByValue().queryEqual(toValue: self.email.text)
+                    query.observe(.value, with: { (snapshot) in
+                        
+                        if(snapshot.childrenCount == 1){
+                            for childSnapshot in snapshot.children {
+                                let snap = childSnapshot as! DataSnapshot
+                                defaults.set(snap.key, forKey: "UserUID")
+                            }
+                            
+                            self.performSegue(withIdentifier: "loginToHome", sender: self)
+                        }
+                        else{
+                            print("Error: more or less than one userID found for that username");
+                        }
+                    })
                     
                     
+                    self.performSegue(withIdentifier: "signupToHome", sender: self)
                     
                 }
                 else{

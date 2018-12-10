@@ -47,8 +47,6 @@ class MessagesViewController: UIViewController {
             print(username)
             
             getUserID(username: username)
-            
-            
         }
     }
     
@@ -153,7 +151,7 @@ class MessagesViewController: UIViewController {
 
 
 
-extension MessagesViewController: UITableViewDataSource {
+extension MessagesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return conversationIDs.count
@@ -183,6 +181,24 @@ extension MessagesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
+        
+        //let person = people[indexPath.row]
+        
+        //self.myVariable = person.value(forKeyPath: "username") as! String
+        
+        //self.performSegue(withIdentifier: "", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //print(myVariable);
+        if (segue.identifier == "contactsToNewMessage") {
+            //print(myVariable);
+            
+            //let destinationVC = segue.destination as? NewMessageViewController
+            //destinationVC?.myVariable = self.myVariable
+        }
     }
     
     
