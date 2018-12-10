@@ -20,6 +20,7 @@ class NewMessageViewController: UIViewController {
     var receipentID = "";
     var userUID: String = "";
     var username: String = "";
+    var convoUID: String = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,40 +44,84 @@ class NewMessageViewController: UIViewController {
         receipientField.text = myVariable;
 
         let defaults = UserDefaults.standard
-        userUID = defaults.string(forKey: "UserUID")
-        username = defaults.string(forKey: "Username")
+        userUID = defaults.string(forKey: "UserUID")!
+        username = defaults.string(forKey: "Username")!
     }
     
     @objc func doneClicked() {
         view.endEditing(true)
-        
-        
     }
 
 
     @IBAction func sendButtonCliced(_ sender: Any) {
         
-        self.dismiss(animated: true, completion: nil) //dismisses model
+        let repUsername: String = self.receipientField.text!
         
-        getUIDOfReceipient()
+        if(repUsername == "" || self.receipientField.text == nil)
+        {
+            let alertController = UIAlertController(title: "Error", message: "Recepient field is empty", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else if(repUsername.contains(" "))
+        {
+            let alertController = UIAlertController(title: "Error", message: "Recepient field cannot have spaces", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else if(repUsername == "" || self.messageBody.text == nil)
+        {
+            let alertController = UIAlertController(title: "Error", message: "Message body is empty", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else
+        {
+            getUIDOfReceipient()
+        }
     }
     
     func getUIDOfReceipient()
     {
         let query = Constants.refs.databaseUsers.queryOrderedByValue().queryEqual(toValue: self.receipientField.text)
         query.observe(.value, with: { (snapshot) in
-            if(snapshot.childrenCount == 1){
-                for childSnapshot in snapshot.children {
-                    let snap = childSnapshot as! DataSnapshot
-                    self.receipentID = snap.key
-                }
+            
+            var found = false
+            
+            for childSnapshot in snapshot.children {
+                let snap = childSnapshot as! DataSnapshot
                 
-                self.getConversationWithBoth()
+                let repUsername: String = snap.value as! String
+                if(repUsername == self.receipientField.text)
+                {
+                    //print("Heres the receipient:", snap.key)
+                    self.receipentID = snap.key
+                    found = true;
+                    break
+                }
+            }
+            
+            query.removeAllObservers()
+            
+            if(found == false)
+            {
+                let alertController = UIAlertController(title: "Error", message: "Username not valid.", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
             }
             else{
-                print("Error: more or less than one userID found for that username");
+                self.getConversationWithBoth()
+                self.dismiss(animated: true, completion: nil) //dismisses model
             }
+            
             
         })
     }
@@ -84,26 +129,77 @@ class NewMessageViewController: UIViewController {
     
     func getConversationWithBoth()
     {
+        var foundMatch = false;
         let query2 = Constants.refs.databaseConvo.queryOrdered(byChild: self.userUID).queryEqual(toValue: self.username)
         query2.observe(.value, with: { (snapshot) in
-            print("convoIDs:")
-            for childSnapshot in snapshot.children {
-                let snap = childSnapshot as! DataSnapshot
-                conversationIDs.append(snap.key)
-                print(snap.key)
+            
+            //print(snapshot)
+            for childSnapAny in snapshot.children {
+                let childSnap = childSnapAny as! DataSnapshot
+                if(childSnap.childrenCount != 2)
+                {
+                    break;
+                }
                 
-                let query3 = Constants.refs.databaseMssgs.queryOrdered(byChild: "convo").queryEqual(toValue: snap.key)
-                query3.observe(.value, with: { (snapshot) in
-                    print("  messageIDs in that convo:")
-                    for childSnapshot3 in snapshot.children {
-                        let snap3 = childSnapshot3 as! DataSnapshot
-                        conversationIDs.append(snap3.key)
-                        print("  ", snap3.key)
+                var found1 = false;
+                var found2 = false;
+                
+                for childSnap2 in childSnap.children{
+                    let snap2 = childSnap2 as! DataSnapshot
+                    if(snap2.key == self.userUID)
+                    {
+                        found1 = true;
                     }
-                })
+                    else if(snap2.key == self.receipentID)
+                    {
+                        found2 = true;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                
+                query2.removeAllObservers()
+                
+                if(found1 == true && found2 == true)
+                {
+                    //print("Here's the convo with both people: ", childSnap.key)
+                    self.convoUID = childSnap.key
+                    self.sendMessage()
+                    foundMatch = true;
+                    break;
+                }
+                
+            }
+            
+            if(foundMatch == false) //create a new conversation
+            {
+                let key = Constants.refs.databaseConvo.childByAutoId().key
+                let repUsername: String = self.receipientField.text!
+                let childUpdates = [key: [self.userUID: self.username,
+                                          self.receipentID: repUsername]]
+                Constants.refs.databaseConvo.updateChildValues(childUpdates)
+                
+                self.convoUID = key!;
+                self.sendMessage()
             }
         })
     }
     
+    func sendMessage()
+    {
+        let key = Constants.refs.databaseMssgs.childByAutoId().key
+        //let post = [key: users[i]]
+        let childUpdates = [key: ["convo": self.convoUID,
+                                  "payload": self.messageBody.text,
+                                  "sender": self.username,
+                                  "timestamp": [".sv":"timestamp"]
+                                    ]
+                            ]
+        Constants.refs.databaseMssgs.updateChildValues(childUpdates)
+        
+        
+    }
     
 }

@@ -44,7 +44,7 @@ class MessagesViewController: UIViewController {
         if(isKeyPresentInUserDefaults(key: "Username"))
         {
             let username = defaults.string(forKey: "Username")!
-            print(username)
+            //print(username)
             
             getUserID(username: username)
         }
@@ -57,7 +57,7 @@ class MessagesViewController: UIViewController {
     //Wil get the UID of any given username
     func getUserID(username: String)
     {
-        print("got here!")
+        //print("got here!")
         let query = Constants.refs.databaseUsers.queryOrderedByValue().queryEqual(toValue: username)
         query.observe(.value, with: { (snapshot) in
             
@@ -66,8 +66,8 @@ class MessagesViewController: UIViewController {
                 self.userID = snap.key
             }
             
-            print("Here is the returned userID:")
-            print(self.userID)
+            //print("Here is the returned userID:")
+            //print(self.userID)
             self.getConversations(userID: self.userID, username: username)
             
             query.removeAllObservers()
@@ -126,7 +126,7 @@ class MessagesViewController: UIViewController {
             self.lastMessageInEachConvo[convoUID] = payload
             self.lastTimestampInEachConvo[convoUID] = time
             
-            print(convoUID, ": ", payload)
+            //print(convoUID, ": ", payload)
             
             query.removeAllObservers()
         })
