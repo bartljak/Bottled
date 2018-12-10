@@ -55,35 +55,22 @@ class NewMessageViewController: UIViewController {
     @IBAction func sendButtonCliced(_ sender: Any) {
 
         let repUsername: String = self.receipientField.text!
+        let messageBody: String = self.messageBody.text!
 
-        if repUsername == "" || self.receipientField.text == nil {
+        if(repUsername == "" || repUsername.contains(" ") || messageBody == ""){
             let alertController =
-                UIAlertController(title: "Error", message: "Recepient field is empty", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        } else if repUsername.contains(" ") {
-            let alertController =
-                UIAlertController(title: "Error", message: "Recepient field cannot have spaces", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        } else if repUsername == "" || self.messageBody.text == nil {
-            let alertController =
-                UIAlertController(title: "Error", message: "Message body is empty", preferredStyle: .alert)
+                UIAlertController(title: "Error", message: "Error with receipient field or message body.", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
 
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         } else {
-            getUIDOfReceipient()
+            getUIDOfReceipient(receipient: repUsername)
         }
     }
 
-    func getUIDOfReceipient() {
-        let query = Constants.Refs.databaseUsers.queryOrderedByValue().queryEqual(toValue: self.receipientField.text)
+    func getUIDOfReceipient(receipient: String) {
+        let query = Constants.Refs.databaseUsers.queryOrderedByValue().queryEqual(toValue: receipient)
         query.observe(.value, with: { (snapshot) in
 
             var found = false
@@ -92,7 +79,7 @@ class NewMessageViewController: UIViewController {
                 let snap = childSnapshot as! DataSnapshot
 
                 let repUsername: String = snap.value as! String
-                if repUsername == self.receipientField.text {
+                if repUsername == receipient {
                     //print("Heres the receipient:", snap.key)
                     self.receipentID = snap.key
                     found = true
@@ -102,7 +89,7 @@ class NewMessageViewController: UIViewController {
 
             query.removeAllObservers()
 
-            if found == false {
+            if found == false { //Receipient want not found in the database
                 let alertController =
                     UIAlertController(title: "Error", message: "Username not valid.", preferredStyle: .alert)
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -119,13 +106,13 @@ class NewMessageViewController: UIViewController {
 
     func getConversationWithBoth() {
         var foundMatch = false
-        let query2 = Constants.Refs.databaseConvo.queryOrdered(byChild: self.userUID).queryEqual(toValue: self.username)
+        let query2 = Constants.Refs.databaseConvo.queryOrdered(byChild: self.userUID).queryEqual(toValue: self.username) //get all convos that have the sending user
         query2.observe(.value, with: { (snapshot) in
 
             //print(snapshot)
             for childSnapAny in snapshot.children {
                 let childSnap = childSnapAny as! DataSnapshot
-                if childSnap.childrenCount != 2 {
+                if childSnap.childrenCount != 2 { //filter out conversations with more than 2 people
                     break
                 }
 
@@ -143,8 +130,6 @@ class NewMessageViewController: UIViewController {
                     }
                 }
 
-                query2.removeAllObservers()
-
                 if found1 == true && found2 == true {
                     //print("Here's the convo with both people: ", childSnap.key)
                     self.convoUID = childSnap.key
@@ -152,18 +137,19 @@ class NewMessageViewController: UIViewController {
                     foundMatch = true
                     break
                 }
-
             }
+            
+            query2.removeAllObservers()
 
             if(foundMatch == false) //create a new conversation
             {
-                let key = Constants.Refs.databaseConvo.childByAutoId().key
+                let key: String = Constants.Refs.databaseConvo.childByAutoId().key!
                 let repUsername: String = self.receipientField.text!
                 let childUpdates = [key: [self.userUID: self.username,
                                           self.receipentID: repUsername]]
                 Constants.Refs.databaseConvo.updateChildValues(childUpdates)
 
-                self.convoUID = key!
+                self.convoUID = key
                 self.sendMessage()
             }
         })

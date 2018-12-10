@@ -31,8 +31,7 @@ class ContactsViewController: UIViewController {
         title = "The List"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
-        print("This is a test")
-
+        //print("This is a test")
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -41,19 +41,15 @@ class MessagesViewController: UIViewController {
         editMessagesButton.layer.borderWidth = 0
 
         let defaults = UserDefaults.standard
-        if isKeyPresentInUserDefaults(key: "Username") {
-            let username = defaults.string(forKey: "Username")!
-            //print(username)
+        let username = defaults.string(forKey: "Username")!
+        let userID = defaults.string(forKey: "UserUID")!
 
-            getUserID(username: username)
-        }
+        getConversations(userID: userID, username: username)
+        
     }
 
-    @IBAction func testButton(_ sender: Any) {
-        self.tableView.reloadData()
-    }
-
-    //Wil get the UID of any given username
+    //Wil get the UID of any given username. Not used anymore because userUID is configured upon login.
+    @available(*, deprecated, message: "No longer needed because user UID is set to user defaults on login.")
     func getUserID(username: String) {
         //print("got here!")
         let query = Constants.Refs.databaseUsers.queryOrderedByValue().queryEqual(toValue: username)
@@ -63,12 +59,12 @@ class MessagesViewController: UIViewController {
                 let snap = childSnapshot as! DataSnapshot
                 self.userID = snap.key
             }
+            
+            query.removeAllObservers()
 
             //print("Here is the returned userID:")
             //print(self.userID)
             self.getConversations(userID: self.userID, username: username)
-
-            query.removeAllObservers()
         })
     }
 
@@ -77,6 +73,7 @@ class MessagesViewController: UIViewController {
         let query = Constants.Refs.databaseConvo.queryOrdered(byChild: userID).queryEqual(toValue: username)
         query.observe(.value, with: { (snapshot) in
 
+            //print(snapshot)  //prints out all the returned conversations, which is all conversations filtered by user UID
             for childSnapshot in snapshot.children {
                 let snap = childSnapshot as! DataSnapshot
                 self.conversationIDs.append(snap.key)
@@ -119,6 +116,8 @@ class MessagesViewController: UIViewController {
 
             self.lastMessageInEachConvo[convoUID] = payload
             self.lastTimestampInEachConvo[convoUID] = time
+            
+            self.tableView.reloadData()
 
             //print(convoUID, ": ", payload)
 
@@ -136,7 +135,6 @@ class MessagesViewController: UIViewController {
     func isKeyPresentInUserDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
-
 }
 
 extension MessagesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -150,7 +148,6 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate {
         let convoID = self.conversationIDs[indexPath.row]
 
         let formatter = DateFormatter()
-        // initially set the format based on your datepicker date / server String
         formatter.dateFormat = "h:mm a"
 
         let myString =
@@ -166,28 +163,6 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
 
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You selected cell #\(indexPath.row)!")
-
-        //let person = people[indexPath.row]
-
-        //self.myVariable = person.value(forKeyPath: "username") as! String
-
-        //self.performSegue(withIdentifier: "", sender: self)
-
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //print(myVariable);
-        if segue.identifier == "contactsToNewMessage" {
-            //print(myVariable);
-
-            //let destinationVC = segue.destination as? NewMessageViewController
-            //destinationVC?.myVariable = self.myVariable
-        }
     }
 
 }

@@ -11,7 +11,7 @@ import Firebase
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
 
@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
 
         keyboardToolBar.setItems([flexibleSpace, doneButton], animated: true)
 
-        email.inputAccessoryView = keyboardToolBar
+        usernameField.inputAccessoryView = keyboardToolBar
         password.inputAccessoryView = keyboardToolBar
     }
 
@@ -41,30 +41,29 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginAction(_ sender: Any) {
 
-        let username = email.text! + "@bottled.com"
+        let username: String = self.usernameField.text!
+        let usernameWithEmail = username + "@bottled.com"
+        let pass: String = self.password.text!
 
-        Auth.auth().signIn(withEmail: username, password: password.text!) { (_, error) in
+        Auth.auth().signIn(withEmail: usernameWithEmail, password: pass) { (_, error) in
             if error == nil {
 
                 let defaults = UserDefaults.standard
-                defaults.set(self.email.text!, forKey: "Username")
+                defaults.set(username, forKey: "Username")
                 defaults.set(true, forKey: "LoggedIn")
 
-                let query = Constants.Refs.databaseUsers.queryOrderedByValue().queryEqual(toValue: self.email.text)
+                let query = Constants.Refs.databaseUsers.queryOrderedByValue().queryEqual(toValue: username)
                 query.observe(.value, with: { (snapshot) in
 
-                    if snapshot.childrenCount == 1 {
-                        for childSnapshot in snapshot.children {
-                            let snap = childSnapshot as! DataSnapshot
-                            defaults.set(snap.key, forKey: "UserUID")
-                        }
-
-                        self.performSegue(withIdentifier: "loginToHome", sender: self)
-                    } else {
-                        print("Error: more or less than one userID found for that username")
+                    for childSnapshot in snapshot.children {
+                        let snap = childSnapshot as! DataSnapshot
+                        defaults.set(snap.key, forKey: "UserUID")
                     }
-                })
 
+                    query.removeAllObservers()
+                    
+                    self.performSegue(withIdentifier: "loginToHome", sender: self)
+                })
             } else {
                 let alertController =
                     UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
