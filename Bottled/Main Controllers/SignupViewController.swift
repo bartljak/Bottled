@@ -15,13 +15,13 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordConfirm: UITextField!
-    @IBOutlet weak var SignupButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        SignupButton.layer.cornerRadius = 5
-        SignupButton.layer.borderWidth = 0
+        signupButton.layer.cornerRadius = 5
+        signupButton.layer.borderWidth = 0
 
         let keyboardToolBar = UIToolbar()
         keyboardToolBar.sizeToFit()

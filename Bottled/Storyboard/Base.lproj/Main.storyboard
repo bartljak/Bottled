@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zu8-ie-h7p">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -25,7 +22,7 @@
             <objects>
                 <viewController id="TS3-Gd-iNJ" userLabel="SignUpViewController" customClass="SignupViewController" customModule="Bottled" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oNn-1q-2ls">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rQK-qt-O4m" userLabel="email">
@@ -74,10 +71,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="iWM-zA-wVV"/>
                     <connections>
-                        <outlet property="SignupButton" destination="pjh-fX-l0S" id="8BC-6q-VMF"/>
                         <outlet property="email" destination="rQK-qt-O4m" id="Pms-ox-drw"/>
                         <outlet property="password" destination="Crw-Fv-Yp1" id="3LQ-jr-y8H"/>
                         <outlet property="passwordConfirm" destination="uao-I5-5HT" id="sOm-qU-J7s"/>
+                        <outlet property="signupButton" destination="pjh-fX-l0S" id="8BC-6q-VMF"/>
                         <segue destination="N3q-0w-woZ" kind="show" identifier="signupToHome" id="mZL-4b-qa1"/>
                     </connections>
                 </viewController>
@@ -98,7 +95,7 @@
             <objects>
                 <viewController id="0sm-pu-pzG" customClass="LoginViewController" customModule="Bottled" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mh7-oV-Uyo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wZp-GF-PU4">
@@ -155,7 +152,7 @@
             <objects>
                 <viewController id="Zu8-ie-h7p" customClass="AuthenticationViewController" customModule="Bottled" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7eK-fu-N7r">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTX-e4-Krn" userLabel="Face ID Button">
@@ -235,7 +232,7 @@
             <objects>
                 <viewController id="MUm-P0-Xlo" userLabel="SplashScreen" customClass="SpashScreenViewController" customModule="Bottled" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r6a-sQ-Kc7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bottled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5n6-f7-sgT">
@@ -288,7 +285,7 @@
             <objects>
                 <viewController id="g9s-KQ-WlN" customClass="PincodeLoginViewController" customModule="Bottled" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wIG-bO-4BL" customClass="pincode">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqN-7h-OgN">
