@@ -1,5 +1,4 @@
 # Bottled
-===================================
 
 This is Bottled, made by Team PSV.
 
