@@ -32,6 +32,7 @@ class ContactsViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 
         //print("This is a test")
+
     }
 
     override func viewWillAppear(_ animated: Bool) {

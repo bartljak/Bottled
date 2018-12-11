@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C14A9A821A9DB5700376CD0 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14A9A721A9DB5700376CD0 /* ContactsViewController.swift */; };
 		0C14A9AD21AA3DAA00376CD0 /* Bottled.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C14A9AB21AA3DAA00376CD0 /* Bottled.xcdatamodeld */; };
+		0C208CBA21BF607300C4C33A /* MyMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C208CB921BF607300C4C33A /* MyMessagesViewController.swift */; };
 		0C29B3CB21AF6EF40076C56C /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C29B3CA21AF6EF40076C56C /* NewMessageViewController.swift */; };
 		0C558B0121901BF30037E8A0 /* ThirdMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C558AFF21901BF30037E8A0 /* ThirdMain.storyboard */; };
 		0C558B05219028A10037E8A0 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */; };
@@ -43,8 +44,6 @@
 		0CE8E40E2190CCBC00059D3C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8E40D2190CCBC00059D3C /* SettingsViewController.swift */; };
 		0CE8E4102190D00C00059D3C /* PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8E40F2190D00C00059D3C /* PincodeViewController.swift */; };
 		0CE8E4122190D51700059D3C /* PincodeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8E4112190D51700059D3C /* PincodeLoginViewController.swift */; };
-		0CE8E4142190EDA100059D3C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE8E4132190EDA100059D3C /* Storyboard.storyboard */; };
-		0CE8E4162190EE8200059D3C /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE8E4152190EE8200059D3C /* MessagesViewController.swift */; };
 		27BE112C8FB0998396237862 /* Pods_BottledUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50E1F0C41AB67E7B4E28070D /* Pods_BottledUITests.framework */; };
 		2C3269392176B10E009A79AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3269382176B10E009A79AB /* Constants.swift */; };
 		2CDF6BBC21769E1800214481 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF6BBB21769E1800214481 /* AppDelegate.swift */; };
@@ -80,6 +79,7 @@
 		0A80DF4DA832715213EC5424 /* Pods_BottledTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BottledTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C14A9A721A9DB5700376CD0 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		0C14A9AC21AA3DAA00376CD0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		0C208CB921BF607300C4C33A /* MyMessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessagesViewController.swift; sourceTree = "<group>"; };
 		0C29B3CA21AF6EF40076C56C /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 		0C558B0021901BF30037E8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ThirdMain.storyboard; sourceTree = "<group>"; };
 		0C558B04219028A10037E8A0 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
@@ -114,8 +114,6 @@
 		0CE8E40D2190CCBC00059D3C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0CE8E40F2190D00C00059D3C /* PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeViewController.swift; sourceTree = "<group>"; };
 		0CE8E4112190D51700059D3C /* PincodeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeLoginViewController.swift; sourceTree = "<group>"; };
-		0CE8E4132190EDA100059D3C /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		0CE8E4152190EE8200059D3C /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		2C3269382176B10E009A79AB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2CDF6BB821769E1800214481 /* Bottled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bottled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CDF6BBB21769E1800214481 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -187,7 +185,7 @@
 				0C29B3CA21AF6EF40076C56C /* NewMessageViewController.swift */,
 				0C14A9A721A9DB5700376CD0 /* ContactsViewController.swift */,
 				0CE8E40D2190CCBC00059D3C /* SettingsViewController.swift */,
-				0CE8E4152190EE8200059D3C /* MessagesViewController.swift */,
+				0C208CB921BF607300C4C33A /* MyMessagesViewController.swift */,
 				0CE8E40F2190D00C00059D3C /* PincodeViewController.swift */,
 				0C9071B1218FF5B50099436B /* TabbedBarViewController.swift */,
 				2CDF6BBD21769E1800214481 /* ChatViewController.swift */,
@@ -201,7 +199,6 @@
 				2CDF6BBF21769E1800214481 /* Main.storyboard */,
 				2CDF6BC421769E1900214481 /* LaunchScreen.storyboard */,
 				0C558AFF21901BF30037E8A0 /* ThirdMain.storyboard */,
-				0CE8E4132190EDA100059D3C /* Storyboard.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -462,7 +459,6 @@
 				0C9071AE218FF1A00099436B /* icon2@2x.PNG in Resources */,
 				0C9071AD218FF1A00099436B /* icon2.PNG in Resources */,
 				0CE8E4092190AA0E00059D3C /* Montserrat-Italic.ttf in Resources */,
-				0CE8E4142190EDA100059D3C /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,11 +584,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C208CBA21BF607300C4C33A /* MyMessagesViewController.swift in Sources */,
 				0CE8E40C2190AABB00059D3C /* SpashScreenViewController.swift in Sources */,
 				0C14A9A821A9DB5700376CD0 /* ContactsViewController.swift in Sources */,
 				2CDF6BBE21769E1800214481 /* ChatViewController.swift in Sources */,
 				0C14A9AD21AA3DAA00376CD0 /* Bottled.xcdatamodeld in Sources */,
-				0CE8E4162190EE8200059D3C /* MessagesViewController.swift in Sources */,
 				0CE8E4122190D51700059D3C /* PincodeLoginViewController.swift in Sources */,
 				2CDF6BBC21769E1800214481 /* AppDelegate.swift in Sources */,
 				0C29B3CB21AF6EF40076C56C /* NewMessageViewController.swift in Sources */,

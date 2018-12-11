@@ -8,19 +8,30 @@
 
 import UIKit
 import JSQMessagesViewController
+import Firebase
 
 class ChatViewController: JSQMessagesViewController {
 
+    var userUID: String = ""
+    var username: String = ""
+    
+    var convoUID: String = ""
+    
+    var recipUser: String = ""
+    var recipUID: String = ""
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         // Show the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         // Hide the Navigation Bar
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     var messages = [JSQMessage]()
@@ -44,83 +55,77 @@ class ChatViewController: JSQMessagesViewController {
         // temporary constant for the standard UserDefaults
         let defaults = UserDefaults.standard
         // check if message has id and name
-        if  let jsq_id = defaults.string(forKey: "jsq_id"),
-            let name = defaults.string(forKey: "jsq_name") {
-            senderId = jsq_id
-            senderDisplayName = name
-        }
-        // user doesnt exist
-        else {
-            // assign random ID to senderid and make name empty
-            senderId = String(arc4random_uniform(999999))
-            senderDisplayName = ""
-            // save ID in user defaults
-            defaults.set(senderId, forKey: "jsq_id")
-            defaults.synchronize()
-            // display alert
-            showDisplayNameDialog()
-        }
+        username = defaults.string(forKey: "Username")!
+        userUID = defaults.string(forKey: "UserUID")!
+        convoUID = defaults.string(forKey: "selectedconvo")!
+        
+        senderId = username
+        senderDisplayName = username
+        
         // display sender name at the top of screen
-        title = "Chat: \(senderDisplayName!)"
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDisplayNameDialog))
-        tapGesture.numberOfTapsRequired = 1
-
-        navigationController?.navigationBar.addGestureRecognizer(tapGesture)
+        title = "Chat Window"
 
         inputToolbar.contentView.leftBarButtonItem = nil
         collectionView.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
 
-        // create query to get last 10 chat messages
-        let query = Constants.Refs.databaseChats.queryLimited(toLast: 10)
-        // add observer to our query
-        _ = query.observe(.childAdded, with: { [weak self] snapshot in
-            // unpack data
-            if  let data        = snapshot.value as? [String: String],
-                let id          = data["sender_id"],
-                let name        = data["name"],
-                let text        = data["text"],
-                !text.isEmpty {
-                // create JSQMessage object
-                if let message = JSQMessage(senderId: id, displayName: name, text: text) {
-                    self?.messages.append(message)
-
-                    self?.finishReceivingMessage()
+        print("convo uid is:", convoUID)
+        Constants.Refs.databaseConvo.child(convoUID).observeSingleEvent(of: .value, with: { (snapshot) in
+            for childsnap in snapshot.children {
+                let child = childsnap as! DataSnapshot
+                let receipname = child.value as! String
+                if(receipname != self.username)
+                {
+                    self.recipUID = child.key
+                    self.recipUser = receipname
+                    self.title = "Chat: " + self.recipUser
+                }
+                
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        self.continueListening()
+        
+        /*
+        let query = Constants.Refs.databaseMssgs.queryOrdered(byChild: "convo").queryEqual(toValue: convoUID)
+        query.observeSingleEvent(of: .value, with: { (snapshot) in
+            for childSnapshot in snapshot.children {
+                let snap = childSnapshot as! DataSnapshot
+                
+                let tempSender = snap.childSnapshot(forPath: "sender").value as! String
+                let tempPayload = snap.childSnapshot(forPath: "payload").value as! String
+                
+                if let message = JSQMessage(senderId: tempSender, displayName: tempSender, text: tempPayload) {
+                    self.messages.append(message)
                 }
             }
-        })
+            
+            self.finishReceivingMessage()
+            self.continueListening()
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }*/
     }
-
-    @objc func showDisplayNameDialog() {
-        let defaults = UserDefaults.standard
-        // create alert controller
-        let alert = UIAlertController(title: "Your Display Name", message: "Before you can chat, please choose a display name. Others will see this name when you send chat messages. You can change your display name again by tapping the navigation bar.", preferredStyle: .alert)
-
-        alert.addTextField { textField in
-
-            if let name = defaults.string(forKey: "jsq_name") {
-                textField.text = name
-            } else {
-                let names = ["Ford", "Arthur", "Zaphod", "Trillian", "Slartibartfast", "Humma Kavula", "Deep Thought"]
-                textField.text = names[Int(arc4random_uniform(UInt32(names.count)))]
+    
+    func continueListening()
+    {
+        let query2 = Constants.Refs.databaseMssgs.queryOrdered(byChild: "convo").queryEqual(toValue: convoUID)
+        // add observer to our query
+        _ = query2.observe(.childAdded, with: { [weak self] snapshot in
+            // unpack data
+            
+            let tempSender  = snapshot.childSnapshot(forPath: "sender").value as! String
+            let tempPayload = snapshot.childSnapshot(forPath: "payload").value as! String
+            
+            if let message = JSQMessage(senderId: tempSender, displayName: tempSender, text: tempPayload) {
+                self?.messages.append(message)
+                self?.finishReceivingMessage()
             }
-        }
-
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self, weak alert] _ in
-
-            if let textField = alert?.textFields?[0], !textField.text!.isEmpty {
-
-                self?.senderDisplayName = textField.text
-
-                self?.title = "Chat: \(self!.senderDisplayName!)"
-
-                defaults.set(textField.text, forKey: "jsq_name")
-                defaults.synchronize()
-            }
-        }))
-
-        present(alert, animated: true, completion: nil)
+            
+        })
     }
 
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -154,12 +159,15 @@ class ChatViewController: JSQMessagesViewController {
    // override, user hits send button
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         // get chats from firebase
-        let ref = Constants.Refs.databaseChats.childByAutoId()
-
-        // dictionary of things to be sent
-        let message = ["sender_id": senderId, "name": senderDisplayName, "text": text]
-
-        ref.setValue(message)
+        let key = Constants.Refs.databaseMssgs.childByAutoId().key
+        //let post = [key: users[i]]
+        let childUpdates = [key: ["convo": self.convoUID,
+                                  "payload": text,
+                                  "sender": self.username,
+                                  "timestamp": [".sv": "timestamp"]
+            ]
+        ]
+        Constants.Refs.databaseMssgs.updateChildValues(childUpdates)
 
         finishSendingMessage()
     }

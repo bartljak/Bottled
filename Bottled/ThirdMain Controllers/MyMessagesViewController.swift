@@ -16,20 +16,28 @@ class MessagesTableViewCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
 
     var convoID: String!
-
+    
+    var otherParticipantsUIDs: [String] = []
+    var otherParticipantsUsernames: [String] = []
 }
 
-class MessagesViewController: UIViewController {
+class MyMessagesViewController: UIViewController {
 
     @IBOutlet weak var newMessageButton: UIButton!
     @IBOutlet weak var editMessagesButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
     var userID: String = ""
+    var username: String = ""
     var conversationIDs: [String] = []
     var lastMessageInEachConvo: [String: String] = [:]
     var lastTimestampInEachConvo: [String: Double] = [:]
-    var otherParticipant: [String: String] = [:]
+    var otherParticipantUsername: [String: String] = [:]
+    var otherParticipantUserUID: [String: String] = [:]
+    
+    var selectedConvoID: String = ""
+    
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +49,29 @@ class MessagesViewController: UIViewController {
         editMessagesButton.layer.borderWidth = 0
 
         let defaults = UserDefaults.standard
-        let username = defaults.string(forKey: "Username")!
-        let userID = defaults.string(forKey: "UserUID")!
+        username = defaults.string(forKey: "Username")!
+        userID = defaults.string(forKey: "UserUID")!
 
         getConversations(userID: userID, username: username)
         
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        
+        
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
+        
+    }
+    
+    @objc private func refreshWeatherData(_ sender: Any) {
+        // Fetch Weather Data
+        tableView.reloadData()
+        
+        self.refreshControl.endRefreshing()
     }
 
     //Wil get the UID of any given username. Not used anymore because userUID is configured upon login.
@@ -81,11 +107,16 @@ class MessagesViewController: UIViewController {
 
                 for children2 in snap.children {
                     let snap2 = children2 as! DataSnapshot
-                    if (snap2.value as! String) != username {
-                        self.otherParticipant[snap.key] = (snap2.value as! String)
+                    let otherUsername = snap2.value as! String
+                    if(otherUsername != username ){
+                        self.otherParticipantUsername[snap.key] = otherUsername
+                        self.otherParticipantUserUID[snap.key] = snap2.key
+                        
+                        //print("Got here!", otherUsername)
                     }
                 }
-                //print(snap.key)
+                //print(self.otherParticipantUsername)
+                //print(self.otherParticipantUserUID)
             }
 
             query.removeAllObservers()
@@ -137,7 +168,7 @@ class MessagesViewController: UIViewController {
     }
 }
 
-extension MessagesViewController: UITableViewDataSource, UITableViewDelegate {
+extension MyMessagesViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return conversationIDs.count
@@ -154,9 +185,10 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate {
             formatter.string(from: NSDate(timeIntervalSince1970: self.lastTimestampInEachConvo[convoID]!/1000) as Date)
 
         cell.convoID = convoID
-        cell.nameLabel?.text = self.otherParticipant[convoID]
+        cell.nameLabel?.text = self.otherParticipantUsername[convoID]
         cell.messageLabel?.text = self.lastMessageInEachConvo[convoID]
         cell.timeLabel?.text = myString
+        
         return cell
     }
 
@@ -164,5 +196,23 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate {
                    forRowAt indexPath: IndexPath) {
 
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print("You selected cell #\(indexPath.row)!")
+        
+        let messageCell = tableView.cellForRow(at: indexPath) as! MessagesTableViewCell
+        
+        //print("convo id: ", messageCell.convoID)
+        let defaults = UserDefaults.standard
+        defaults.set(messageCell.convoID, forKey: "selectedconvo")
+        
+        self.performSegue(withIdentifier: "messagesToChatView", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
 
 }
+
+
