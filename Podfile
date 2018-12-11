@@ -7,7 +7,12 @@ target 'Bottled' do
 
   # Pods for Bottled
   pod 'Firebase/Core'
-
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'JSQMessagesViewController'
+  pod 'SwiftLint'
+  
   target 'BottledTests' do
     inherit! :search_paths
     # Pods for testing
