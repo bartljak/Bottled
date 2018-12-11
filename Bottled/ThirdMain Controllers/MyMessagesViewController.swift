@@ -34,9 +34,7 @@ class MyMessagesViewController: UIViewController {
     var lastTimestampInEachConvo: [String: Double] = [:]
     var otherParticipantUsername: [String: String] = [:]
     var otherParticipantUserUID: [String: String] = [:]
-    
     var selectedConvoID: String = ""
-    
     private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -53,24 +51,17 @@ class MyMessagesViewController: UIViewController {
         userID = defaults.string(forKey: "UserUID")!
 
         getConversations(userID: userID, username: username)
-        
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         } else {
             tableView.addSubview(refreshControl)
         }
-        
-        
-        
         // Configure Refresh Control
         refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
-        
     }
-    
     @objc private func refreshWeatherData(_ sender: Any) {
         // Fetch Weather Data
         tableView.reloadData()
-        
         self.refreshControl.endRefreshing()
     }
 
@@ -99,7 +90,8 @@ class MyMessagesViewController: UIViewController {
         let query = Constants.Refs.databaseConvo.queryOrdered(byChild: userID).queryEqual(toValue: username)
         query.observe(.value, with: { (snapshot) in
 
-            //print(snapshot)  //prints out all the returned conversations, which is all conversations filtered by user UID
+            //print(snapshot)  //prints out all the returned conversations,
+            // which is all conversations filtered by user UID
             for childSnapshot in snapshot.children {
                 let snap = childSnapshot as! DataSnapshot
                 self.conversationIDs.append(snap.key)
@@ -108,10 +100,9 @@ class MyMessagesViewController: UIViewController {
                 for children2 in snap.children {
                     let snap2 = children2 as! DataSnapshot
                     let otherUsername = snap2.value as! String
-                    if(otherUsername != username ){
+                    if otherUsername != username {
                         self.otherParticipantUsername[snap.key] = otherUsername
                         self.otherParticipantUserUID[snap.key] = snap2.key
-                        
                         //print("Got here!", otherUsername)
                     }
                 }
@@ -147,7 +138,6 @@ class MyMessagesViewController: UIViewController {
 
             self.lastMessageInEachConvo[convoUID] = payload
             self.lastTimestampInEachConvo[convoUID] = time
-            
             self.tableView.reloadData()
 
             //print(convoUID, ": ", payload)
@@ -188,7 +178,6 @@ extension MyMessagesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.nameLabel?.text = self.otherParticipantUsername[convoID]
         cell.messageLabel?.text = self.lastMessageInEachConvo[convoID]
         cell.timeLabel?.text = myString
-        
         return cell
     }
 
@@ -196,23 +185,13 @@ extension MyMessagesViewController: UITableViewDataSource, UITableViewDelegate {
                    forRowAt indexPath: IndexPath) {
 
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print("You selected cell #\(indexPath.row)!")
-        
         let messageCell = tableView.cellForRow(at: indexPath) as! MessagesTableViewCell
-        
         //print("convo id: ", messageCell.convoID)
         let defaults = UserDefaults.standard
         defaults.set(messageCell.convoID, forKey: "selectedconvo")
-        
         self.performSegue(withIdentifier: "messagesToChatView", sender: self)
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
-
 }
-
-

@@ -54,20 +54,20 @@ class SignupViewController: UIViewController {
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
-        } else if(username.contains(" ")) { //check is username has any spaces
+        } else if username.contains(" ") { //check is username has any spaces
             let alertController = UIAlertController(title: "Username Invalid",
-                                                    message: "You cannot use spaces in your username.", preferredStyle: .alert)
+                                                    message: "You cannot use spaces in your username.",
+                                                    preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
-        }
-        else{ //if neither of previous conditions are true, then goahead and attempt account creation
+        } else { //if neither of previous conditions are true, then goahead and attempt account creation
             Auth.auth().createUser(withEmail: usernameWithEmail, password: pass) { (_, error) in
                 if error == nil {
                     let key = Constants.Refs.databaseUsers.childByAutoId().key
                     let childUpdates = [key: username]
                     Constants.Refs.databaseUsers.updateChildValues(childUpdates)
-                    
+
                     let defaults = UserDefaults.standard
                     defaults.set(username, forKey: "Username") //set user defaults username
                     defaults.set(true, forKey: "LoggedIn") //set user defaults logged in

@@ -14,18 +14,14 @@ class ChatViewController: JSQMessagesViewController {
 
     var userUID: String = ""
     var username: String = ""
-    
     var convoUID: String = ""
     
     var recipUser: String = ""
     var recipUID: String = ""
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         // Show the Navigation Bar
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,10 +54,8 @@ class ChatViewController: JSQMessagesViewController {
         username = defaults.string(forKey: "Username")!
         userUID = defaults.string(forKey: "UserUID")!
         convoUID = defaults.string(forKey: "selectedconvo")!
-        
         senderId = username
         senderDisplayName = username
-        
         // display sender name at the top of screen
         title = "Chat Window"
 
@@ -74,20 +68,16 @@ class ChatViewController: JSQMessagesViewController {
             for childsnap in snapshot.children {
                 let child = childsnap as! DataSnapshot
                 let receipname = child.value as! String
-                if(receipname != self.username)
-                {
+                if receipname != self.username {
                     self.recipUID = child.key
                     self.recipUser = receipname
                     self.title = "Chat: " + self.recipUser
                 }
-                
             }
         }) { (error) in
             print(error.localizedDescription)
         }
-        
         self.continueListening()
-        
         /*
         let query = Constants.Refs.databaseMssgs.queryOrdered(byChild: "convo").queryEqual(toValue: convoUID)
         query.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -109,26 +99,22 @@ class ChatViewController: JSQMessagesViewController {
             print(error.localizedDescription)
         }*/
     }
-    
-    func continueListening()
-    {
+    func continueListening() {
         let query2 = Constants.Refs.databaseMssgs.queryOrdered(byChild: "convo").queryEqual(toValue: convoUID)
         // add observer to our query
         _ = query2.observe(.childAdded, with: { [weak self] snapshot in
             // unpack data
-            
             let tempSender  = snapshot.childSnapshot(forPath: "sender").value as! String
             let tempPayload = snapshot.childSnapshot(forPath: "payload").value as! String
-            
             if let message = JSQMessage(senderId: tempSender, displayName: tempSender, text: tempPayload) {
                 self?.messages.append(message)
                 self?.finishReceivingMessage()
             }
-            
         })
     }
 
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!,
+                                 messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
     }
 
@@ -137,27 +123,36 @@ class ChatViewController: JSQMessagesViewController {
     }
 
     // delegate to control which bubble is displayed
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!,
+                                 messageBubbleImageDataForItemAt indexPath: IndexPath!)
+        -> JSQMessageBubbleImageDataSource! {
         return messages[indexPath.item].senderId == senderId ? outgoingBubble : incomingBubble
     }
 
     // hides avatars
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!,
+                                 avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
 
     // called when label text is needed
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
-        return messages[indexPath.item].senderId == senderId ? nil : NSAttributedString(string: messages[indexPath.item].senderDisplayName)
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!,
+                                 attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!)
+        -> NSAttributedString! {
+        return messages[indexPath.item].senderId == senderId ? nil :
+            NSAttributedString(string: messages[indexPath.item].senderDisplayName)
     }
 
     // called when the height of the top label is needed
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!,
+                                 layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!,
+                                 heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
         return messages[indexPath.item].senderId == senderId ? 0 : 15
     }
 
    // override, user hits send button
-    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!,
+                               senderId: String!, senderDisplayName: String!, date: Date!) {
         // get chats from firebase
         let key = Constants.Refs.databaseMssgs.childByAutoId().key
         //let post = [key: users[i]]

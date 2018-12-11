@@ -43,9 +43,10 @@ class PincodeViewController: UIViewController {
 
     @IBAction func setpincodeFunc(_ sender: Any) {
 
-        if pincodeField.text != pincodeConfirmField.text  {
+        if pincodeField.text != pincodeConfirmField.text {
             let alertController =
-                UIAlertController(title: "Pincode Doesnt Match", message: "Please re-type pincode", preferredStyle: .alert)
+                UIAlertController(title: "Pincode Doesnt Match",
+                                  message: "Please re-type pincode", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
 
             alertController.addAction(defaultAction)

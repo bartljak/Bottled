@@ -61,7 +61,6 @@ class LoginViewController: UIViewController {
                     }
 
                     query.removeAllObservers()
-                    
                     self.performSegue(withIdentifier: "loginToHome", sender: self)
                 })
             } else {

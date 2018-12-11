@@ -57,9 +57,11 @@ class NewMessageViewController: UIViewController {
         let repUsername: String = self.receipientField.text!
         let messageBody: String = self.messageBody.text!
 
-        if(repUsername == "" || repUsername.contains(" ") || messageBody == ""){
+        if repUsername == "" || repUsername.contains(" ") || messageBody == "" {
             let alertController =
-                UIAlertController(title: "Error", message: "Error with receipient field or message body.", preferredStyle: .alert)
+                UIAlertController(title: "Error",
+                                  message: "Error with receipient field or message body.",
+                                  preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
 
             alertController.addAction(defaultAction)
@@ -106,7 +108,8 @@ class NewMessageViewController: UIViewController {
 
     func getConversationWithBoth() {
         var foundMatch = false
-        let query2 = Constants.Refs.databaseConvo.queryOrdered(byChild: self.userUID).queryEqual(toValue: self.username) //get all convos that have the sending user
+        let query2 = Constants.Refs.databaseConvo.queryOrdered(byChild: self.userUID)
+            .queryEqual(toValue: self.username) //get all convos that have the sending user
         query2.observe(.value, with: { (snapshot) in
 
             //print(snapshot)
@@ -138,7 +141,6 @@ class NewMessageViewController: UIViewController {
                     break
                 }
             }
-            
             query2.removeAllObservers()
 
             if(foundMatch == false) //create a new conversation
